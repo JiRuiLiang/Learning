@@ -1,0 +1,6 @@
+/build/*.js
+src/lib/*.js
+/config/*.js
+/dist/
+/*.js
+gulpfile.js
