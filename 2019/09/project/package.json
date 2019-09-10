@@ -20,7 +20,7 @@
     "eruda": "^1.5.0",
     "gulp": "^3.9.1",
     "gulp-sftp": "^0.1.5",
-    "jquery": "^2.2.3",
+    "jquery": "^3.4.0",
     "js-md5": "^0.7.3",
     "mockjs": "^1.0.1-beta3",
     "node-sass": "^4.9.0",
@@ -84,8 +84,8 @@
     "vue2-animate": "^2.0.0",
     "vuex": "^3.0.1",
     "webpack": "^3.11.0",
-    "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-dev-server": "^2.9.1",
+    "webpack-bundle-analyzer": "^3.3.2",
+    "webpack-dev-server": "^3.1.11",
     "webpack-merge": "^4.1.0"
   },
   "engines": {
