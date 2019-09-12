@@ -1,1 +1,7 @@
-记录工作及学习中遇到的问题
+- 2019
+  - 09
+    - vue + webpack + node + gulp  打包项目并上传至服务器DEMO
+    - webpack入门 + demo
+    - 02.md: node + gulp报错，node v.10以上
+  - web面试题
+  - git.md 常用git命令
