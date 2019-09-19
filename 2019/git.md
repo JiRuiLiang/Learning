@@ -1,4 +1,4 @@
-小白三大命令
+## 小白三大命令
 
 - `git clone url`   copy项目至本地
 - `git checkout 分支名称 `  切换至分支
@@ -9,6 +9,13 @@
 - `git push`   上传文件
 
 - `git branch` 查看所有分支
+
+## git 公钥配置
+`ssh-keygen -t rsa -C "邮箱"`  生成公钥
+`ssh-keygen -t rsa -b 4096 -C "邮箱"` 生成公钥并替换原有公钥。多公钥在命令执行后手动输入文件名，并在.ssh目录创建config文本文件并完成相关配置(最核心的地方)
+`cat ~/.ssh/id_rsa.pub`  查看生成的公钥(手动复制)
+在git中打开项目： Settings => Deploy keys => Add deploy key => 将复制的公钥粘贴到 Key输入框里 => Title自由设置 => 选中Allow write access => Add key
+**注意：** clone项目需要通过SSH key方式, 不然git提交还是需要输入账号密码
 
 ## Git 基本概念
 
@@ -221,11 +228,5 @@ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Crese
 git config --list
 修改配置：打开全局的.gitconfig 文件：vi~/.gitconfig;然后在文件中直接修改。
 
-## git 公钥配置
-`git config --global user.name "账号"` 设置登录账号
-`git config --global user.email "邮箱"` 设置邮箱
-`ssh-keygen -t rsa -C "邮箱"`  生成公钥
-`cat ~/.ssh/id_rsa.pub`  查看生成的公钥(手动复制)
-在git中打开项目： Settings => Deploy keys => Add deploy key => 将复制的公钥粘贴到 Key输入框里 => Title自由设置 => 选中Allow write access => Add key
-**注意：** clone项目需要通过SSH key方式, 不然git提交还是需要输入账号密码
+
 
