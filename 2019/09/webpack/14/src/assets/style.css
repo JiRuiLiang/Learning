@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Myfont';
+  src: url('./my-font.woff') format('woff'),
+       url('./my-font.woff2').format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+.hello {
+  font-size: 50px;
+  font-weight: bold;
+  font-family: 'Myfont';
+}
