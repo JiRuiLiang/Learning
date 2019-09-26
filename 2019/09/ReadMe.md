@@ -2,6 +2,11 @@
 
 ## webpack => webpack入门 + demo
 
-## VUEX =》 VUEX的基础使用
+## VUEX => Vuex 的基础使用
+
+## Angular => Angular 的基础使用
 
 ## book 笔记
+  - eslintrc.js.md eslint配置方法
+  - Flow.md javascript静态类型检查工具
+  - TypeScript.md javascript超集语言

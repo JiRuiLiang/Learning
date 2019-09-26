@@ -1,0 +1,12 @@
+<div class="todos">
+  <input [(ngModel)]="todoName" type="text">
+  <button (click)="add()">添加</button>
+  <p *ngFor="let item of todos;let id= index;trackBy: trackByToDo">
+    {{id + 1}} 、
+    <span [class.lineT]="item.done" (click)="toggle($event, id)">{{ item.name }}</span>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a (click)="deleClick(id, $event)">x</a>
+  </p>
+  <!-- <app-child skill="msg">传递一个静态数据</app-child> -->
+  <app-child [skill]="msg" (getMoney)="giveMoney($event)"></app-child>
+</div>
