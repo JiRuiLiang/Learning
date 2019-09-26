@@ -42,3 +42,5 @@
 - 更高级语法的使用： `babel` 处理 `generator` 使用 `@babel/plugin-transform-runtime`,`@babel/runtime`
 
 - webpack `dev-tool` 配置设置log定位到源代码位置
+- `webpack-merge` 用于把自己的配置与base的配置进行合并后导出
+- `import` 必须在顶级导入， `require`是动态导入，所以`require`不能够使用`webpack`的`tree shaking`
