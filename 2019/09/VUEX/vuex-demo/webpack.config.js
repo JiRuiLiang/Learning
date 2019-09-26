@@ -34,7 +34,7 @@ module.exports = env => {
               }
             }
           ],
-          exclude: /src/
+          exclude: /node_modules/
         }
       ]
     },

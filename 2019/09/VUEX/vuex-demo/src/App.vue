@@ -23,9 +23,6 @@ export default {
     ]),
     ...mapActions([
       'getChangeValue'
-    ]),
-    ...mapMutations([
-      'valueChange'
     ])
   },
   mounted() {
@@ -36,9 +33,16 @@ export default {
   methods: {
     changeName() {
       this.$store.commit('valueChange', '0111')
-      // this.valueChange 此种方法调用不能传参
+      // this.changeValue('对象引入')
+      this.valueChange('数组引入')
       this.length = this.getLength()
-    }
+    },
+    // ...mapMutations({ // 通过数组方式引入无法传参，对象形式可以
+    //   'changeValue': 'valueChange'
+    // })
+    ...mapMutations([ // 在计算属性引入无法传参，在methods内可以
+      'valueChange'
+    ])
   }
 
 }

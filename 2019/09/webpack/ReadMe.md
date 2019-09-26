@@ -16,3 +16,29 @@
 - 13 shimming 兼容处理模块引用的方式
 - 14 渐进式网络应用程序-离线环境运行 （http-server）
 - 15 环境变量
+
+
+## 自动编译工具小结
+ 只有在开发时才需要自动编译工具， 例如webpack-dev-server
+ 项目上线时都会直接使用webpack进行打包构建，不需要使用这些自动编译工具
+ 所有自动编译工具都是为了提升开发体验
+
+## babel-loader 使用
+- 可以配置 .babelrc 文件，也可放到webpack配置中
+- `babel-loader` `@babel/core` `@babel/preset-env` 依赖项
+```js
+  {
+    test: /\.js$/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: ['@babel/env'],
+        plugins: ['@babel/plugin-proposal-class-properties']
+      }
+    },
+    exclude: /node_modules/
+  }
+```
+- 更高级语法的使用： `babel` 处理 `generator` 使用 `@babel/plugin-transform-runtime`,`@babel/runtime`
+
+- webpack `dev-tool` 配置设置log定位到源代码位置
