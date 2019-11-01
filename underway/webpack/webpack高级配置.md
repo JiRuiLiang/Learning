@@ -78,3 +78,7 @@
   2. 创建插件对象，并定义环境变量`new webpack.DefinePlugin({
       IS_DEV: 'true' // 这里必须是字符串类型
     })`
+6. 使用devServer解决开发阶段跨域问题
+  1. jsonp
+  2. cors 即 Cross-Origin Resource Sharing 跨域资源共享，接口响应添加允许跨域响应头 `Access-Control-Allow-Origin: <origin> | *`
+  3. http proxy webpack-dev-server做请求转发处理
