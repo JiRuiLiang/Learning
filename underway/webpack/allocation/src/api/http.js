@@ -1,9 +1,9 @@
-let host = 'http://localhost:9999'
+let host = 'http://localhost:8080'
 if (!IS_DEV) {
   host = 'http://csnn.com'
 }
 
-let url = host + '/api/v1/getUser'
+let url = '/api/getUserInfo'
 
 import axios from 'axios'
 

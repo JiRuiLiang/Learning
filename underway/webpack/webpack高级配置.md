@@ -82,3 +82,40 @@
   1. jsonp
   2. cors 即 Cross-Origin Resource Sharing 跨域资源共享，接口响应添加允许跨域响应头 `Access-Control-Allow-Origin: <origin> | *`
   3. http proxy webpack-dev-server做请求转发处理
+  ```js
+    // webpack.dev.js
+    const merge = require('webpack-merge')
+    const baseConfig = require('./webpack.base.js')
+    const webpack = require('webpack')
+    module.exports = merge(baseConfig, {
+      ...
+      devServer: { // 开发模式配置，如果命令只配置了webpack-dev-server，会引入这里的内容
+        open: true, // 是否自动打开
+        hot: true, // 通过这种方式开启hot，需要安装插件webpack.HotModuleReplacementPlugin
+        port: 8081, // 指定端口
+        compress: true, // 开启压缩
+        contentBase: './src',
+        proxy: { //请求重定向
+          // '/api': 'http://localhost:3000'
+          '/api': {
+            target: 'http://localhost:3000',
+            pathRewrite: { // 重写路径
+              '^/api': ''
+            }
+          }
+        }
+      },
+      ...
+    })
+  ```
+7. HMR 热模块更替-只适用于开发环境
+  - 将`devServer`内`hot`属性设置为`true`,这种设置会更新代码并刷新页面
+  - 更新代码不刷新页面
+  ```js
+    // 需要创建单独文件，在父级通过下面的方式引用
+    module.hot.accept('./子级文件名.js', function(){
+      // 这个函数当hotmodule模块内容更新时触发
+      var hotmodule = require('./子级文件名.js')
+      console.log(hotmodule)
+    })
+  ```

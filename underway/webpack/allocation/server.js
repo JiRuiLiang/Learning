@@ -1,15 +1,15 @@
 // server.js
 const express = require('express')
-const webpack = require('webpack')
-const webpackDevMiddleware = require('webpack-dev-middleware')
-const config = require('./webpack.config.js')
 const app = express()
-const compiler = webpack(config)
+// const cors = require('cors')
+// app.use(cors())
+app.get('/api/getUserInfo', (req, res) => {
+  res.send({
+    name: '小明',
+    age: 18
+  })
+})
 
-app.use(webpackDevMiddleware(compiler, {
-  publicPath: '/'
-}))
-
-app.listen(8080, function () {
-  console.log('启动成功：', 'http://localhost:8080')
+app.listen(3000, function () {
+  console.log('启动成功：', 'http://localhost:3000')
 })
