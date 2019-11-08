@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const webpack = require('webpack')
 
 module.exports = {
   entry: './src/index.js',
@@ -18,6 +19,17 @@ module.exports = {
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css'
+    }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: function() {
+          return [
+            require("autoprefixer")({
+              browsers: ['ie>=8', '>1% in CN']
+            })
+          ]
+        }
+      }
     })
   ],
   module: {

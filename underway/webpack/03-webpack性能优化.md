@@ -27,8 +27,16 @@
     ```
     4. 将原来配置的所有`style-loader`替换为`MiniCssExtractPlugin.loader`
     ```js
+      // webpack loader配置
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      }
+      // postcss-loader 需要单独配置
+      // 在项目根目录下创建文件 postcss.config.js
+      module.exports = {
+        plugins: {
+          'autoprefixer': {browsers: 'last 5 version'}
+        }
       }
     ```
