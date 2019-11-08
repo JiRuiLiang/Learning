@@ -113,9 +113,11 @@
   - 更新代码不刷新页面
   ```js
     // 需要创建单独文件，在父级通过下面的方式引用
-    module.hot.accept('./子级文件名.js', function(){
-      // 这个函数当hotmodule模块内容更新时触发
-      var hotmodule = require('./子级文件名.js')
-      console.log(hotmodule)
-    })
+    if (module.hot) {
+      module.hot.accept('./子级文件名.js', function(){
+        // 这个函数当hotmodule模块内容更新时触发
+        var hotmodule = require('./子级文件名.js')
+        console.log(hotmodule)
+      })
+    }
   ```

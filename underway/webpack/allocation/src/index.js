@@ -1,13 +1,7 @@
-// import { getUser } from './api/http.js'
-// getUser().then(res => {
-//   document.write(res.data.name + res.data.age)
-// }).catch(e => {
-//   console.error(e)
-// })
-import str from './hotmodule.js'
-console.log(str)
-module.hot.accept('./hotmodule.js', function(){
-  // 这个函数当hotmodule模块内容更新时触发
-  var hotmodule = require('./hotmodule.js')
-  console.log(hotmodule)
-})
+// let math = require('./math.js')
+// console.log(math.add(1, 2))
+
+
+import {add, minute} from './math.js'
+import './css/index.css'
+console.log(add(1, 2))
