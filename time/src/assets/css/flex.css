@@ -1,0 +1,21 @@
+.flex-box {
+  display: flex;
+  height: 300px;
+  /* flex-direction: row; 横向排序-123排序-从左至右  */
+  /* flex-direction: row-reverse; 横向排序-321排序-从右至左 */
+  /* flex-direction: column; 竖向排序-123排序-由上至下 */
+  /* flex-direction: column-reverse; 竖向排序-321排序-由下至上 */
+}
+.flex-box div {
+  width: 100px;
+  height: 100px;
+}
+.one {
+  background-color: moccasin;
+}
+.two {
+  background-color: palegreen;
+}
+.three {
+  background-color: skyblue;
+}

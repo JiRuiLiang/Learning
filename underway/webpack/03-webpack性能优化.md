@@ -4,7 +4,7 @@
     开发时引入一个模块后，如果只使用其中一个功能，上线打包时只会把用到的功能打包进bundle，其他没用到的功能都不会打包进来，可以实现最基础的优化
   - scope hoisting 作用域提升 `ModuleConcatenationPlugin`,
     scope hoisting的作用是将模块之间的关系进行结果推测，可以让webpack打包出来的代码文件更小、运行的更快。在production模式下会自动添加；其他模式下可以手动添加。
-    scope hoisting的实现原理其实很简单：分析出模块之间的依赖关系，尽可能的把打散的模块合并到一个函数中去，但前提是不能造成代码冗余。因此只有那些被引用了一次的模块才能被合并。由于scope hoisting需要分析出模块之间的依赖关系，因此源码必须采用ES6模块化语句，不然它将无法生效。原因和tree shaking一样。
+    scope hoisting的实现原理其实很简单：分析出模块之间的依赖关系，尽可能的把打散的模 块合并到一个函数中去，但前提是不能造成代码冗余。因此只有那些被引用了一次的模块才能被合并。由于scope hoisting需要分析出模块之间的依赖关系，因此源码必须采用ES6模块化语句，不然它将无法生效。原因和tree shaking一样。
   - 代码压缩
 
 2. 将css提取到独立文件中
@@ -26,6 +26,8 @@
       })
     ```
     4. 将原来配置的所有`style-loader`替换为`MiniCssExtractPlugin.loader`
+      - `style-loader` 是将css样式插入文件
+      - `MiniCssExtractPlugin` 是将css样式抽离为单独文件
     ```js
       // webpack loader配置
       {
@@ -38,5 +40,18 @@
         plugins: {
           'autoprefixer': {browsers: 'last 5 version'}
         }
+      }
+    ```
+
+3. css 自动添加css前缀
+- 使用`postcss`,需要使用`postcss-loader`和`autoprefixer`插件
+使用方法
+  1. 安装 `npm install postcss-loader autoprefixer -D`
+  2. 配置webpack
+    ```js
+      // webpack.prod.js
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       }
     ```

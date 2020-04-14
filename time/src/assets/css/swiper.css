@@ -1,0 +1,94 @@
+
+.clearfix::after,
+.clearfix::before {
+  clear: both;
+  height: 0;
+  content: ".";
+	line-height: 0;
+	display: block;
+	visibility: hidden;
+}
+.clearfix {
+	*zoom: 1;
+}
+.fl {
+  float: left;
+}
+
+
+.swiper {
+  height: 300px;
+  width: 300px;
+  overflow: hidden;
+  border: 2px solid red;
+}
+.animation {
+  width: 500%;
+  height: 100%;
+  animation: swiper 10s infinite;
+}
+.animation>div {
+  width: 300px;
+  height: 100%;
+  font-size: 70px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  line-height: 300px;
+}
+.one {
+  background-color: lawngreen;
+}
+.two {
+  background-color: rgb(54, 63, 189);
+}
+.three {
+  background-color: rgb(211, 163, 193);
+}
+.four {
+  background-color: mintcream;
+}
+.five {
+  background-color: rgb(81, 196, 138);
+}
+
+
+
+@keyframes swiper {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  15% {
+    transform: translate3d(0, 0, 0);
+  }
+  20% {
+    transform: translate3d(-20%, 0, 0);
+  }
+  35% {
+    transform: translate3d(-20%, 0, 0);
+  }
+  40% {
+    transform: translate3d(-40%, 0, 0);
+  }
+  55% {
+    transform: translate3d(-40%, 0, 0);
+  }
+  60% {
+    transform: translate3d(-60%, 0, 0);
+  }
+  75% {
+    transform: translate3d(-60%, 0, 0);
+  }
+  80% {
+    transform: translate3d(-80%, 0, 0);
+  }
+  95% {
+    transform: translate3d(-80%, 0, 0);
+  }
+  96% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
