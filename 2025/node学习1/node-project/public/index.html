@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NODE学习项目</title>
+</head>
+<body>
+  <h1>Hello Node Public Page</h1>
+  <input type="file" class="fileBtn">
+  <ul class="file-list"></ul>
+</body>
+<script>
+  window.onload = function(){
+    // 创建一个原生post请求
+    const xhr = new XMLHttpRequest();
+
+    // 修改文本
+    function setText() {
+      xhr.open('POST', '/api/data');
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify({ content: 'Hello from the client!' }));
+      xhr.onload = function() {
+        console.log(xhr.responseText);
+      };
+    }
+    
+    // 上传文件
+    const fileBtn = document.querySelector('.fileBtn');
+    fileBtn.addEventListener('change', changeFile);
+    function changeFile() {
+      try {
+        const file = document.querySelector('input[type="file"]').files[0];
+        const formData = new FormData();
+        formData.append('file', file, file.name);  
+        xhr.open('POST', '/files');
+        xhr.send(formData);
+        xhr.onload = function() {
+          // 清除input选中内容
+          fileBtn.value = null;
+          getFileList();
+        };
+      } catch (e) {
+        console.error(e)
+      }
+      
+      
+    }
+    
+    // 获取文件列表
+    const fileList = document.querySelector('.file-list');
+    function getFileList() {
+      xhr.open('GET', '/files');
+      xhr.setRequestHeader('Content-Type', 'application/json;charset=utf-8');
+      xhr.send(); 
+    
+      xhr.onload = function() {
+        // 清空ul
+        const data = JSON.parse(xhr.responseText).data;
+        fileList.innerHTML = data.map(file => {
+          return `<li>
+            <div>创建时间：${file.createdAt}</div>
+            <div>文件名：${file.filename}</div>
+            <div>文件大小：${file.size}</div>
+            <button fileId="${file.id}">删除</button>
+          </li>`
+        })
+      }
+    } 
+    getFileList();
+    fileList.addEventListener('click', function(e) {
+      const target = e.target;
+      if (target.tagName === 'BUTTON') {
+        const fileId = target.getAttribute('fileId');
+        removeFile(fileId);
+      }
+    })
+    function removeFile(id) {
+      if (confirm('确定删除该文件？')) {
+        xhr.open('DELETE', `/files/${id}`);
+        xhr.send();
+        xhr.onload = () => getFileList();
+      }
+    }
+  }
+    
+
+</script>
+</html>
